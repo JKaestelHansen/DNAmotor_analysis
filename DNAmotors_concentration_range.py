@@ -14,8 +14,8 @@ import natsort
 try:
     from deepspt_src import *
 except:
-    os.sys.path.append('../..')
-    from SPT.github_final.DeepSPT.deepspt_src import *
+    os.sys.path.append('../')
+    from DeepSPT_simple_updated.deepspt_src import *
 
 
 def plot_diffusion_simple(track, label_list):
@@ -689,7 +689,7 @@ yvalues = all_FP_cond
 
 natsorted_list = natsort.natsorted(np.unique(exp_type_list))
 
-yvalues_natsort = np.array([yvalues[i] for i in np.argsort(natsorted_list)])
+yvalues_natsort = np.array([yvalues[i] for i in np.argsort(natsorted_list)], dtype=object)
 ants = np.repeat(np.arange(len(yvalues_natsort)), [len(yvalues_natsort[i]) for i in range(len(yvalues_natsort))])
 displ = np.random.uniform(-0.2, 0.2, len(ants))
 ants_spread_natsort = ants + displ
@@ -1031,8 +1031,8 @@ natsorted_list = np.roll(natsorted_list, 1)
 argsort_natsort = np.roll(argsort_natsort, 1)
 print(argsort_natsort)
 
-frac_1s_per_condition_natsort = np.array([frac_1s_per_condition[i] for i in argsort_natsort])
-frac_2s_per_condition_natsort = np.array([frac_2s_per_condition[i] for i in argsort_natsort])
+frac_1s_per_condition_natsort = np.array([frac_1s_per_condition[i] for i in argsort_natsort], dtype=object)
+frac_2s_per_condition_natsort = np.array([frac_2s_per_condition[i] for i in argsort_natsort], dtype=object)
 total_tracks_per_condition_natsort = np.array([total_tracks_per_condition[i] for i in argsort_natsort])
 
 l1_all = frac_1s_per_condition_natsort
@@ -1421,7 +1421,7 @@ FP_all = np.column_stack([FP_all, perc_track_restricted])
 FP_all = np.vstack([
     FP_dict[k] for k in list(segment_length_restricted_sum_dict.keys())])
 tracks_all = np.array([
-    df_tracks_dict[k] for k in list(segment_length_restricted_sum_dict.keys())])
+    df_tracks_dict[k] for k in list(segment_length_restricted_sum_dict.keys())], dtype=object)
 keys_order_FP = [k.split('100pPE')[0] for k in list(segment_length_restricted_sum_dict.keys())]
 keys_order_FP_uniq = natsort.natsorted(np.unique(keys_order_FP))
 lencond = [len(FP_dict[k]) for k in list(segment_length_restricted_sum_dict.keys())]
