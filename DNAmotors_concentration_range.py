@@ -15,7 +15,7 @@ try:
     from deepspt_src import *
 except:
     os.sys.path.append('../')
-    from DeepSPT_simple_updated.deepspt_src import *
+    from DeepSPT.deepspt_src import *
 
 
 def plot_diffusion_simple(track, label_list):
